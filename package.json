@@ -1,0 +1,28 @@
+{
+    "name": "polymatica-widget-sankey-1",
+    "version": "1.0.0",
+    "description": "Виджет для Полиматики с Сакей диаграммой на основе chartjs-chart-sankey",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "start": "ptnl-constructor-devtools",
+        "build": "ptnl-constructor build"
+    },
+    "repository": {
+        "type": "git",
+        "url": "http://github.com"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "devDependencies": {
+        "@types/chart.js": "^2.9.35",
+        "@types/lodash": "^4.14.178",
+        "chart.js": "^3.7.0",
+        "chartjs-chart-sankey": "^0.8.1",
+        "lodash": "^4.17.21",
+        "ptnl-constructor-cli": "^0.7.55",
+        "ptnl-constructor-devtools": "^0.7.40",
+        "ptnl-constructor-sdk": "^0.7.141"
+    }
+}
