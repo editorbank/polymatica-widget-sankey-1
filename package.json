@@ -1,7 +1,7 @@
 {
     "name": "polymatica-widget-sankey-1",
     "version": "1.0.0",
-    "description": "Виджет для Полиматики с Сакей диаграммой на основе chartjs-chart-sankey",
+    "description": "Виджет для Полиматики с Санкей диаграммой на основе chartjs-chart-sankey",
     "main": "index.js",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
