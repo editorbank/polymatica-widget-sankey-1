@@ -1,8 +1,5 @@
 node_modules/
-
-widget/*.js
-widget/*.zip
-widget/config.json
+widget/
 
 .ptnl-devtools/
 .DS_Store
