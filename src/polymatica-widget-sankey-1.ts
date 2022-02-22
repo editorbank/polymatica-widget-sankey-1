@@ -57,11 +57,28 @@ export class Column extends Widget implements SingleData {
 
         
         if(this._chart) {
-            this._chart.destroy()
+            // this._chart.destroy()
             this._chart=undefined
         }
+        
+        this._chart = this._canvas as HTMLDivElement
 
-        //*
+        var html='Обновлено: '+(new Date().toISOString())+'<hr/>'
+        
+        html+='<table>'
+        html+='<tr><th>Поток от</th><th>Поток до</th><th>Величина потока</th></tr>'
+        for(var i in this._cart_data.links){
+            html+=('<tr>'
+                +'<td>'+(this._cart_data.links[i]?.from||'None')+ '</td>'
+                +'<td>'+(this._cart_data.links[i]?.to||'None')+ '</td>'
+                +'<td>'+(this._cart_data.links[i]?.flow||'None')+ '</td>'
+            +'</tr>');
+        }
+        html+='</table>'
+
+        this._chart.innerHTML = html;
+
+        /*
         // console.log('chart create');
         Chart.defaults.font = {
             family:this.viewSettings._TextFamily,
@@ -91,7 +108,7 @@ export class Column extends Widget implements SingleData {
         // this.ct._saveImage();
     }
 
-    private _chart :Chart<'sankey'> = undefined;
+    private _chart :HTMLDivElement = undefined;
     private _colors :Dictionary<string> = {};
 
 
@@ -167,7 +184,8 @@ export class Column extends Widget implements SingleData {
         };
         
 
-        if(!this._canvas) this._canvas = document.getElementById('chart') as HTMLCanvasElement;
+        if(!this._canvas) this._canvas = document.getElementById('chart') as HTMLDivElement;
+        // if(!this._canvas) this._canvas = document.getElementById('chart') as HTMLCanvasElement;
         // this.ct = new CanvasTools(this._canvas);
         if(!this._cart_data) this._cart_data={};
         if(!this._cart_data.links) this._cart_data.links=[];
