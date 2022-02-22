@@ -36,7 +36,7 @@ export class Column extends Widget implements SingleData {
     }
 
     private _resizeAndDraw(){
-        console.log('debug _onResizeWindow()');
+        // console.log('debug _onResizeWindow()');
         if(this._canvas){
             this._canvas.width=this._canvas.parentElement.clientWidth;
             this._canvas.height=this._canvas.parentElement.clientHeight;
@@ -53,7 +53,7 @@ export class Column extends Widget implements SingleData {
 
 
     private _drawChart(){
-        console.log('debug _drawChart()');
+        // console.log('debug _drawChart()');
 
         
         if(this._chart) {
@@ -62,37 +62,31 @@ export class Column extends Widget implements SingleData {
         }
 
         //*
-        if(!this._chart) {
-            console.log('chart create');
-            Chart.defaults.font = {
-                family:this.viewSettings._TextFamily,
-                size: parseFloat(this.viewSettings._TextSize) || 20,
-                style: this.viewSettings._TextStyle || 'normal',
-            };
-            this._chart = new Chart(this._canvas.getContext('2d'), {
-                type: 'sankey',
-                data: {
-                  datasets: [
-                    {
-                      color: this.viewSettings._TextColor || 'gray',
-                      borderWidth: parseInt(this.viewSettings._NodesBorderValue) || 0,
-                      borderColor: this.viewSettings._NodesBorderColor || 'transparent',
-                      data: this._cart_data.links,
-                      colorFrom: (config) => this.getColorByData(config.dataset.data[config.dataIndex].from),
-                      colorTo: (config) => this.getColorByData(config.dataset.data[config.dataIndex].to),
-                      colorMode: this.viewSettings.colorMode,
-                      labels: {},
-                      priority: {},
-                      size: this.viewSettings.preferredFlowOverlap,
-                    },
-                  ]
+        // console.log('chart create');
+        Chart.defaults.font = {
+            family:this.viewSettings._TextFamily,
+            size: parseFloat(this.viewSettings._TextSize) || 20,
+            style: this.viewSettings._TextStyle || 'normal',
+        };
+        this._chart = new Chart(this._canvas.getContext('2d'), {
+            type: 'sankey',
+            data: {
+                datasets: [
+                {
+                    color: this.viewSettings._TextColor || 'gray',
+                    borderWidth: parseInt(this.viewSettings._NodesBorderValue) || 0,
+                    borderColor: this.viewSettings._NodesBorderColor || 'transparent',
+                    data: this._cart_data.links,
+                    colorFrom: (config) => this.getColorByData(config.dataset.data[config.dataIndex].from),
+                    colorTo: (config) => this.getColorByData(config.dataset.data[config.dataIndex].to),
+                    colorMode: this.viewSettings.colorMode,
+                    labels: {},
+                    priority: {},
+                    size: this.viewSettings.preferredFlowOverlap,
                 },
-            });
-        } else {
-            console.log('chart update');
-            
-            this._chart.draw()
-        }    
+                ]
+            },
+        });
         //*/
         // this.ct._saveImage();
     }
@@ -102,7 +96,7 @@ export class Column extends Widget implements SingleData {
 
 
     private _prepareColors(): void {
-        console.log('debug _prepareColors()');
+        // console.log('debug _prepareColors()');
         var i=0;
         for(var key in this._colors){
             this._colors[key]=this.theme.colors[i];
@@ -112,7 +106,7 @@ export class Column extends Widget implements SingleData {
     }
 
     private _prepareData(): void {
-        console.log('debug _prepareData()');
+        // console.log('debug _prepareData()');
         
         // this.endIndexForFilter = this.getNonFilteredEndIndex();
 
@@ -134,12 +128,12 @@ export class Column extends Widget implements SingleData {
     
 
     onLangChange(): void {
-        console.log('debug onLangChange()');
+        // console.log('debug onLangChange()');
         this._drawChart();
     }
 
     onThemeChange(): void {
-        console.log('debug onThemeChange()');
+        // console.log('debug onThemeChange()');
         this._prepareColors();
         this._drawChart();
     }
@@ -148,7 +142,7 @@ export class Column extends Widget implements SingleData {
 
     onChange(): void {
         
-        console.log('debug onChange()');
+        // console.log('debug onChange()');
         var current_dataSettings = JSON.stringify(this.dataSettings.columnsByBlock);
         if(this._old_dataSettings !== current_dataSettings){
             this._prepareData();
@@ -161,15 +155,15 @@ export class Column extends Widget implements SingleData {
     }
 
     onInit(): void {
-        console.log('debug onInit()');
+        // console.log('debug onInit()');
         // const container = document.getElementById('chart');
         // container.addEventListener('mousedown', () => {});
         // container.addEventListener('mousemove', () => {});
         this.dataSettings.events.onOtherFilterChange = (filter) => {
-            console.log('onOtherFilterChange');
+            // console.log('onOtherFilterChange');
         };
         this.dataSettings.events.onOtherFilterChange = (filter) => {
-            console.log('onOtherFilterChange');
+            // console.log('onOtherFilterChange');
         };
         
 
